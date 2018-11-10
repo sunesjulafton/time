@@ -66,6 +66,13 @@
 			<div class="nav-right">
 				<ul>
 					
+					<li>
+					<input type="text" placeholder="Search" class="search"/>
+					<i class="fa fa-search" aria-hidden="true"></i>
+					<div class="search-result">			
+					</div>
+					</li>
+
 
 					<li class="hover"><label class="drop-label" for="drop-wrap1"><img src="<?php echo $user->profile_image;?>"/></label>
 					<input type="checkbox" id="drop-wrap1">
@@ -156,7 +163,7 @@
 		</div><!-- in left end-->
 		<div class="in-center">
 			<div class="in-center-wrap">
-				<h2>Search customer</h2>
+				<!--<h2>Search customer</h2>
 				<ul>
 					<li>
 						<input type="text" placeholder="Search" class="search"/>
@@ -164,7 +171,8 @@
 						<div class="search-result">			
 						</div>
 					</li>
-				</ul>	
+				</ul>
+				-->	
 				<!--TWEET WRAPPER-->
 				<!--
 				<div class="tweet-wrap">
@@ -234,6 +242,7 @@
 </div><!-- in wrappper ends-->
 </div><!-- inner wrapper ends-->
 </div><!-- ends wrapper -->
+
 </body>
 
 </html>

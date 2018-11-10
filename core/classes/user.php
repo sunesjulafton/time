@@ -17,9 +17,10 @@
 		}
 
 		public function search($search) {
-			$stmt = $this->pdo->prepare("SELECT user_id, username, screen_name, profile_image, profile_cover FROM users WHERE username LIKE ? OR screen_name LIKE ?");
+			console_log($search);
+			$stmt = $this->pdo->prepare("SELECT customer_id, customer_name FROM customers WHERE customer_name LIKE ?");
 			$stmt->bindValue(1,$search.'%', PDO::PARAM_STR);
-			$stmt->bindValue(2,$search.'%', PDO::PARAM_STR);
+			
 			$stmt->execute();
 			return $stmt->fetchAll(PDO::FETCH_OBJ);
 		}
@@ -46,15 +47,8 @@
 
 		public function login($email, $password) {
 
-			console_log($email);
-			console_log($password);
-
 			$password_hash = $this->get_password_hash($email);
 
-			//console_log($password_hash);
-
-
-			
 			if (password_verify($password, $password_hash['password'])) {
 				$password = $password_hash['password'];
 
@@ -95,7 +89,7 @@
 		}
 
 		public function register($username, $email, $password) {
-			console_log("jajajaj");
+			
 			$password = password_hash($password, PASSWORD_DEFAULT);
 
 			
