@@ -27,8 +27,8 @@
 		else {
 			$error = "Type or choose image to tweet";
 		}
-	}
-	*/
+	}*/
+	
 
 ?>
 
@@ -39,7 +39,7 @@
 <!DOCTYPE HTML> 
  <html>
 	<head>
-		<title>Tweety</title>
+		<title>Time</title>
 		  <meta charset="UTF-8" />
 		  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"/>  
  	  	  <link rel="stylesheet" href="assets/css/style-complete.css"/> 
@@ -65,12 +65,7 @@
 
 			<div class="nav-right">
 				<ul>
-					<li>
-						<input type="text" placeholder="Search" class="search"/>
-						<i class="fa fa-search" aria-hidden="true"></i>
-						<div class="search-result">			
-						</div>
-					</li>
+					
 
 					<li class="hover"><label class="drop-label" for="drop-wrap1"><img src="<?php echo $user->profile_image;?>"/></label>
 					<input type="checkbox" id="drop-wrap1">
@@ -161,13 +156,23 @@
 		</div><!-- in left end-->
 		<div class="in-center">
 			<div class="in-center-wrap">
+				<h2>Search customer</h2>
+				<ul>
+					<li>
+						<input type="text" placeholder="Search" class="search"/>
+						<i class="fa fa-search" aria-hidden="true"></i>
+						<div class="search-result">			
+						</div>
+					</li>
+				</ul>	
 				<!--TWEET WRAPPER-->
+				<!--
 				<div class="tweet-wrap">
 					<div class="tweet-inner">
 						 <div class="tweet-h-left">
-						 	<div class="tweet-h-img">
+						 	<div class="tweet-h-img"> -->
 						 	<!-- PROFILE-IMAGE -->
-						 		<img src="<?php echo $user->profile_image;?>"/>
+						 		<!--<img src="<?php echo $user->profile_image;?>"/>
 						 	</div>
 						 </div>
 						 <div class="tweet-body">
@@ -194,7 +199,7 @@
 						 	</div>
 						 </div>
 					</div>
-				</div><!--TWEET WRAP END-->
+				</div>--><!--TWEET WRAP END-->
 
 			
 				<!--Tweet SHOW WRAPPER-->
