@@ -10,7 +10,7 @@
 			
 
 			$password = $getFromU->checkInput($password);
-
+			console_log("sune1111");
 			
 			if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 				$error = "Invalid format";

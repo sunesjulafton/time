@@ -68,7 +68,7 @@
 					</div>
 				</div>
 				</li>
-				<li><label for="pop-up-tweet" class="addTweetBtn">Tweet</label></li>
+				<!-- <li><label for="pop-up-tweet" class="addTweetBtn">Tweet</label></li> -->
 			<?php }else {echo '<li><a href="' . BASE_URL .'index.php">Have an account? Log in!</a></li>';} ?>
 			</ul>
 		</div><!-- nav right ends-->
@@ -89,48 +89,52 @@
 	<ul>
 		<li>
 		<div class="n-head">
-			TWEETS
+			Total Support Minutes
 		</div>
 		<div class="n-bottom">
-		  0
+		  <span><?php echo $profile_data->support_minutes;?></span>
 		</div>
 		</li>
+		<!--
 		<li>
-			<a href="<?php echo BASE_URL . $profile_data->username;?>/following">
+			<a href="<?php //echo BASE_URL . $profile_data->username;?>/following">
 				<div class="n-head">
-					<a href="<?php echo BASE_URL . $profile_data->username;?>">FOLLOWING</a>
+					<a href="<?php //echo BASE_URL . $profile_data->username;?>">FOLLOWING</a>
 				</div>
 				<div class="n-bottom">
-					<span class="count-following"><?php echo $profile_data->following;?></span>
+					<span class="count-following"><?php //echo $profile_data->following;?></span>
 				</div>
 			</a>
 		</li>
+	-->
 		<li>
-		 <a href="<?php echo BASE_URL . $profile_data->username;?>">
+		 
 				<div class="n-head">
-					FOLLOWERS
+					Supported Customers
 				</div>
 				<div class="n-bottom">
-					<span class="count-followers"><?php echo $profile_data->followers;?></span>
+					<span class="count-followers"><?php echo $profile_data->supported_customers;?></span>
 				</div>
-			</a>
+			
 		</li>
 		<li>
-			<a href="#">
+			
 				<div class="n-head">
-					LIKES
+					Average Support Time
 				</div>
 				<div class="n-bottom">
-					0
+					<span class="count-followers"><?php echo $profile_data->average_support_time;?></span>
 				</div>
-			</a>
+			
 		</li>
 	</ul>
+	<!--
 	<div class="edit-button">
 		<span>
 			<button class="f-btn follow-btn"  data-follow="user_id" data-user="user_id"><i class="fa fa-user-plus"></i> Follow </button>
 		</span>
 	</div>
+-->
     </div>
 </div>
 </div><!--Profile Cover End-->
@@ -150,7 +154,7 @@
 
 		<div class="profile-name-wrap">
 			<div class="profile-name">
-				<a href="<?php echo BASE_URL . $profile_data->profile_cover;?>"><?php echo $profile_data->screen_name;?></a>
+				<a href="<?php echo BASE_URL . $profile_data->username;?>"><?php echo $profile_data->username;?></a>
 			</div>
 			<div class="profile-tname">
 				@<span class="username"><?php echo $profile_data->username;?></span>
@@ -159,10 +163,10 @@
 
 		<div class="profile-bio-wrap">
 		 <div class="profile-bio-inner">
-		    <?php echo $profile_data->bio;?>
+		    <!--<?php echo $profile_data->bio;?>-->
 		 </div>
 		</div>
-
+<!--
 <div class="profile-extra-info">
 	<div class="profile-extra-inner">
 		<ul>
@@ -187,23 +191,24 @@
 				</li>
 			<?php } ?>
 			<li>
-				<div class="profile-ex-location-i">
+				<div class="profile-ex-location-i"> -->
 					<!-- <i class="fa fa-calendar-o" aria-hidden="true"></i> -->
-				</div>
+				<!-- </div>
 				<div class="profile-ex-location">
  				</div>
 			</li>
 			<li>
-				<div class="profile-ex-location-i">
+				<div class="profile-ex-location-i"> -->
 					<!-- <i class="fa fa-tint" aria-hidden="true"></i> -->
-				</div>
+				<!--</div>
 				<div class="profile-ex-location">
 				</div>
 			</li>
 		</ul>						
 	</div>
 </div>
-
+-->
+<!--
 <div class="profile-extra-footer">
 	<div class="profile-extra-footer-head">
 		<div class="profile-extra-info">
@@ -220,12 +225,12 @@
 		</div>
 	</div>
 	<div class="profile-extra-footer-body">
-		<ul>
+		<ul> -->
 			 <!-- <li><img src="#"/></li> -->
-		</ul>		
+		<!--</ul>		
 	</div>
 </div>
-
+-->
 	 </div>
 	<!--PROFILE INFO INNER END-->
 

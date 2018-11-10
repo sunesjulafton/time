@@ -8,6 +8,7 @@
 		header('Location: index.php');
 	}
 	
+	/*
 	if(isset($_POST['tweet'])) {
 		$status = $getFromU->checkInput($_POST['status']);
 		$tweetImage = '';
@@ -27,6 +28,7 @@
 			$error = "Type or choose image to tweet";
 		}
 	}
+	*/
 
 ?>
 
@@ -49,46 +51,46 @@
 <!-- header wrapper -->
 <div class="header-wrapper">
 
-<div class="nav-container">
-	<!-- Nav -->
-	<div class="nav">
-		
-		<div class="nav-left">
-			<ul>
-				<li><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
-				<li><a href="i/notifications"><i class="fa fa-bell" aria-hidden="true"></i>Notification</a></li>
-				<li><i class="fa fa-envelope" aria-hidden="true"></i>Messages</li>
-			</ul>
-		</div><!-- nav left ends-->
+	<div class="nav-container">
+		<!-- Nav -->
+		<div class="nav">
+			
+			<div class="nav-left">
+				<ul>
+					<li><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+					<li><a href="i/notifications"><i class="fa fa-bell" aria-hidden="true"></i>Notification</a></li>
+					<li><i class="fa fa-envelope" aria-hidden="true"></i>Messages</li>
+				</ul>
+			</div><!-- nav left ends-->
 
-		<div class="nav-right">
-			<ul>
-				<li>
-					<input type="text" placeholder="Search" class="search"/>
-					<i class="fa fa-search" aria-hidden="true"></i>
-					<div class="search-result">			
+			<div class="nav-right">
+				<ul>
+					<li>
+						<input type="text" placeholder="Search" class="search"/>
+						<i class="fa fa-search" aria-hidden="true"></i>
+						<div class="search-result">			
+						</div>
+					</li>
+
+					<li class="hover"><label class="drop-label" for="drop-wrap1"><img src="<?php echo $user->profile_image;?>"/></label>
+					<input type="checkbox" id="drop-wrap1">
+					<div class="drop-wrap">
+						<div class="drop-inner">
+							<ul>
+								<li><a href="<?php echo $user->username;?>"><?php echo $user->username;?></a></li>
+								<li><a href="settings/account">Settings</a></li>
+								<li><a href="includes/logout.php">Log out</a></li>
+							</ul>
+						</div>
 					</div>
-				</li>
+					</li>
+					<!--<li><a href="includes/logout.php">Log out</a></li>-->
+				</ul>
+			</div><!-- nav right ends-->
 
-				<li class="hover"><label class="drop-label" for="drop-wrap1"><img src="<?php echo $user->profile_image;?>"/></label>
-				<input type="checkbox" id="drop-wrap1">
-				<div class="drop-wrap">
-					<div class="drop-inner">
-						<ul>
-							<li><a href="<?php echo $user->username;?>"><?php echo $user->username;?></a></li>
-							<li><a href="settings/account">Settings</a></li>
-							<li><a href="includes/logout.php">Log out</a></li>
-						</ul>
-					</div>
-				</div>
-				</li>
-				<li><label class="addTweetBtn">Tweet</label></li>
-			</ul>
-		</div><!-- nav right ends-->
+		</div><!-- nav ends -->
 
-	</div><!-- nav ends -->
-
-</div><!-- nav container ends -->
+	</div><!-- nav container ends -->
 
 </div><!-- header wrapper end -->
 
@@ -115,7 +117,7 @@
 					</div><!--  in b box end-->
 					<div class="info-body-name">
 						<div class="in-b-name">
-							<div><a href="<?php echo $user->username;?>"><?php echo $user->screen_name;?></a></div>
+							<div><a href="<?php echo $user->username;?>"><?php echo $user->username;?></a></div>
 							<span><small><a href="<?php echo $user->username;?>">@<?php echo $user->username;?></a></small></span>
 						</div><!-- in b name end-->
 					</div><!-- info body name end-->
@@ -124,26 +126,26 @@
 					<div class="number-wrapper">
 						<div class="num-box">
 							<div class="num-head">
-								TWEETS
+								Total Support Minutes
 							</div>
 							<div class="num-body">
-								10
+								<span class="count-following"><?php echo $user->support_minutes;?></span>
 							</div>
 						</div>
 						<div class="num-box">
 							<div class="num-head">
-								FOLLOWING
+								Total Supported Customers
 							</div>
 							<div class="num-body">
-								<span class="count-following"><?php echo $user->following;?></span>
+								<span class="count-following"><?php echo $user->supported_customers;?></span>
 							</div>
 						</div>
 						<div class="num-box">
 							<div class="num-head">
-								FOLLOWERS
+								Average Support Time
 							</div>
 							<div class="num-body">
-								<span class="count-followers"><?php echo $user->followers;?></span>
+								<span class="count-followers"><?php echo $user->average_support_time;?></span>
 							</div>
 						</div>	
 					</div><!-- mumber wrapper-->
@@ -197,7 +199,8 @@
 			
 				<!--Tweet SHOW WRAPPER-->
 				 <div class="tweets">
- 				  	<?php $getFromT->tweets(); ?>
+ 				  	<!-- <?php $getFromT->tweets(); ?> -->
+
  				 </div>
  				<!--TWEETS SHOW WRAPPER-->
 

@@ -1,6 +1,6 @@
 <?php
 
-	$dsn = 'mysql:host=localhost; dbname=time';
+	$dsn = 'mysql:host=localhost; dbname=time;charset=utf8';
 	$user = 'root';
 	$pass = 'root';
 

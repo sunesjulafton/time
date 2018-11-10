@@ -5,7 +5,7 @@
 	$user = $getFromU->userData($user_id);
 
 	if(isset($_GET['step']) === true && empty($_GET['step']) === false) {
-		console_log("sunedsds");
+		
 		if(isset($_POST['next'])) {
 			$username = $getFromU->checkInput($_POST['username']);
 

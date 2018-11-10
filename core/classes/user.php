@@ -37,6 +37,7 @@
 	        echo "Error: " . $e.getMessage() . "<br />";
 	        return false;
 	      }
+
 	      return $stmt->fetch(PDO::FETCH_ASSOC);
 
 
@@ -50,21 +51,15 @@
 
 			$password_hash = $this->get_password_hash($email);
 
-			console_log($password_hash);
+			//console_log($password_hash);
+
 
 			
-
 			if (password_verify($password, $password_hash['password'])) {
-
-			console_log("sune");
-
 				$password = $password_hash['password'];
-
-				
 
 				$stmt = $this->pdo->prepare('SELECT user_id FROM users WHERE email = ? AND password = ?');
 
-				
 				$stmt->bindParam(1, $email, PDO::PARAM_STR);
 				$stmt->bindParam(2, $password, PDO::PARAM_STR);
 				$stmt->execute();
@@ -103,9 +98,9 @@
 			console_log("jajajaj");
 			$password = password_hash($password, PASSWORD_DEFAULT);
 
-			console_log($username . " " . $email . " " . $password);
+			
 
-			$stmt = $this->pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+			$stmt = $this->pdo->prepare('INSERT INTO users (username, email, password) VALUES (?, ?, ?)');
 			
 			$stmt->bindParam(1, $username, PDO::PARAM_STR);
 			$stmt->bindParam(2, $email, PDO::PARAM_STR);

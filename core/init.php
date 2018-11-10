@@ -20,7 +20,7 @@
 	  echo '</script>';
 	}
 
-	define("BASE_URL", "http://localhost:8888/time/");
+	define("BASE_URL", "http://localhost/time/");
 
 
 ?>
