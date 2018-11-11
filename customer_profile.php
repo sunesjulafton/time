@@ -14,58 +14,86 @@
 	}
 	
 
-	if(isset($_POST['register_support'])) {
+	if(isset($_POST['register_ticket'])) {
 		
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-		$email = $_POST['email'];
+		$ticket_owner= $_POST['ticket_owner'];
+		$ticket_user = $_POST['ticket_user'];
+		$ticket_time = $_POST['ticket_time'];
+		$ticket_date = $_POST['ticket_date'];
 		$error = "";
 
-		
+		console_log($ticket_owner);
+		console_log($ticket_user);
+		console_log($ticket_time);
+		console_log($ticket_date);
 
-		if(empty($username) or empty($password) or empty($email)) {
+		if(empty($ticket_owner) or empty($ticket_user) or empty($ticket_time) or empty($ticket_date)) {
 			$error = "All fields are required!";
 			
 		}
 		else {
+			$ticket_user = $getFromU->checkInput($ticket_user);
+			$ticket_time = $getFromU->checkInput($ticket_time);
+			$ticket_date = $getFromU->checkInput($ticket_date);
 			
-			$username = $getFromU->checkInput($username);
-			$password = $getFromU->checkInput($password);
-			$email = $getFromU->checkInput($email);
-			
+			/*
 			if(!filter_var($email)) {
 				$error = "Invalid email format!";
 				
 			}
-			
+			*/
+
 			/*else if(strlen($screen_name) > 20) {
 				$error = "Name must be in between 6-20 characters!";
 				console_log("sune4");
 			}
 			*/
-
+			/*
 			else if(strlen($password) < 5) {
 				$error = "Password must be at least 5 characters long!";
 				
 			}
-			else {
-				
+			*/
+			//else {
+				/*
 				if($getFromU->checkEmail($email) === true) {
 					$error = "Email is already in use!";
 					
 				}
 				else {
-					
+				*/	
 					//$password = password_hash($password, PASSWORD_DEFAULT);
-					
-					$user_id = $getFromU->register($username, $email, $password);
-					
-					$_SESSION['user_id'] = $user_id;
+					$getFromU->create('tickets', array('ticket_owner' => $ticket_owner, 'ticket_user' => $ticket_user, 'ticket_time' => $ticket_time, 'ticket_date' => date('Y-m-d H:i:s')));
 
-					header('Location: home.php');
-				}
+					
+					$total_support_time = $customer->total_support_time;
+					$used_support_time = $customer->used_support_time;
+					
+					console_log($total_support_time);
+					console_log($used_support_time);
+
+
+					$total_support_time = $total_support_time + $ticket_time;
+					$total_support_time = (string)$total_support_time;
+					$used_support_time = $used_support_time + $ticket_time;
+					$used_support_time = (string)$used_support_time;
+					
+					console_log($total_support_time);
+					console_log($used_support_time);
+					console_log($customer_id);
+
+					$getFromC->update('customers', $customer_id, array('total_support_time' => $total_support_time, 'used_support_time' => $used_support_time));
+
+
+
+					//$user_id = $getFromC->register_support($customer_id, $email, $password);
+					
+					//$_SESSION['user_id'] = $user_id;
+
+					header('Location: customer_profile.php?customer_id=' . $customer_id);
+				//}
 				
-			}
+			//}
 		}
 	}
 
@@ -161,7 +189,7 @@
 											Used time / Time left
 										</div>
 										<div class="n-bottom">
-											<span class="count-followers"><?php echo $customer->used_support_time . ' / ' . $customer->support_time_left;?></span>
+											<span class="count-followers"><?php echo $customer->used_support_time . ' / ' . $customer->monthly_support_time;?></span>
 										</div>
 									</li>
 								</ul>
@@ -170,24 +198,24 @@
 						<div class="customer-actions-container">
 							<h3 class="customer-h3">New support ticket</h3>
 							<div>
-								<form action="report_support_time.php">
+								<form method="post">
 
-									<input type="hidden" name="customer_id" value="<?php echo $customer->customer_id ?>">
+									<input type="hidden" name="ticket_owner" value="<?php echo $customer->customer_id ?>">
 
 									<div>
 										User:<br>
-										<input type="text" name="customer_user">
+										<input type="text" name="ticket_user">
 									</div>
 									<div>
 										Time:<br>
-										<input type="time" name="time">
+										<input type="number" name="ticket_time">
 									</div>
 									<div>
 										Date:<br>
-										<input type="date" name="date">
+										<input type="date" name="ticket_date">
 									</div>
 									<div>
-										<input type="submit" value="Send">
+										<input type="submit" name="register_ticket" value="Send">
 									</div>
 
 

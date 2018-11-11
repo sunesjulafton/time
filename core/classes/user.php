@@ -121,10 +121,11 @@
 			$columns = implode(',', array_keys($fields));
 			$values = ':' . implode(', :', array_keys($fields));
 			$sql = "INSERT INTO {$table} ({$columns}) VALUES ({$values})";
-			 
+			console_log("create"); 
 			if($stmt = $this->pdo->prepare($sql)) {
 				foreach($fields as $key => $data) {
 					$stmt->bindValue(':' . $key, $data);
+					console_log($key . " - " . $data);
 				}
 				$stmt->execute();
 				return $this->pdo->lastInsertId();

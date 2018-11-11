@@ -14,13 +14,36 @@
 		}
 
 
-		public function register_support($username, $email, $password) {
+		public function update($table, $customer_id, $fields = array()) {
+			$columns = '';
+			$i = 1;
+
+			foreach($fields as $name => $value) {
+				$columns .= "`{$name}` = :{$name}";
+				if($i < count($fields)) {
+					$columns .= ', ';
+				}
+				$i++;
+			}
+
+			$sql = "UPDATE {$table} SET {$columns} WHERE `customer_id` = {$customer_id}";
+			if($stmt = $this->pdo->prepare($sql)) {
+				foreach($fields as $key => $value) {
+					$stmt->bindValue(':'. $key, $value);
+				}
+				
+				$stmt->execute();
+			}
+		}
+
+		/*
+		public function register_support($customer_id, $email, $password) {
 			
 			$password = password_hash($password, PASSWORD_DEFAULT);
 
 			
 
-			$stmt = $this->pdo->prepare('INSERT INTO users (username, email, password) VALUES (?, ?, ?)');
+			$stmt = $this->pdo->prepare('INSERT INTO tickets (username, email, password) VALUES (?, ?, ?)');
 			
 			$stmt->bindParam(1, $username, PDO::PARAM_STR);
 			$stmt->bindParam(2, $email, PDO::PARAM_STR);
@@ -34,6 +57,7 @@
 
 
 		}
+		*/
 
 
 
