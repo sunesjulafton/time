@@ -6,14 +6,14 @@
 		$search = $getFromU->checkInput($_POST['search']);
 		$result = $getFromU->search($search);
 
-		console_log("jajajaja");
+		
 
 		if(!empty($result)) {
 			echo '<div class="nav-right-down-wrap"><ul> ';
 
 			foreach($result as $customer) {
 				echo '<li>
-						<a href="'. BASE_URL . 'customers/' . $customer->customer_id .'">' . $customer->customer_name . '</a>
+						<a href="'. BASE_URL . 'customer_profile.php?customer_id=' . $customer->customer_id .'">' . $customer->customer_name . '</a>
 
 					</li> ';
 
@@ -38,7 +38,7 @@
 			echo '</ul></div>';
 		}
 		else {
-			console_log("empty");
+			
 		}
 	}
 

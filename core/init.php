@@ -2,7 +2,7 @@
 
 	include 'database/connection.php';
 	include 'classes/user.php';
-	//include 'classes/tweet.php';
+	include 'classes/customer.php';
 	//include 'classes/follow.php';
 
 	global $pdo;
@@ -10,7 +10,7 @@
 	session_start();
 
 	$getFromU = new User($pdo);
-	//$getFromT = new Tweet($pdo);
+	$getFromC = new Customer($pdo);
 	//$getFromF = new Follow($pdo);
 
 	function console_log( $data ){

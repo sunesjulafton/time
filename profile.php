@@ -25,7 +25,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>twitter</title>
+		<title>time</title>
 		<meta charset="UTF-8" />
  		<link rel="stylesheet" href="<?php echo BASE_URL;?>assets/css/style-complete.css"/>
    		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"/>  
